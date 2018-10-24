@@ -40,7 +40,92 @@ More examples, featuring some common resistor values
 "red black green gold"             "2M ohms, 5%"
  */
 
-public class ResistorColorCodesPart1 {
+import java.util.HashMap;
 
+public class DecodeResistorColors {
 
+    public static String decodeResistorColors(String bands) {
+        String[] tab = bands.split(" ");
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        map.put("black", 0);
+        map.put("brown", 1);
+        map.put("red", 2);
+        map.put("orange", 3);
+        map.put("yellow", 4);
+        map.put("green", 5);
+        map.put("blue", 6);
+        map.put("violet", 7);
+        map.put("gray", 8);
+        map.put("white", 9);
+        StringBuilder sb = new StringBuilder();
+
+        switch (tab[2].trim()) {
+            case "black":
+                sb.append(map.get(tab[0].trim()));
+                sb.append(map.get(tab[1].trim()));
+                break;
+            case "brown":
+                sb.append(map.get(tab[0].trim()));
+                sb.append(map.get(tab[1].trim()));
+                sb.append(0);
+                break;
+            case "red":
+                if (tab[1].equals("black")) {
+                    sb.append(map.get(tab[0].trim()));
+                    sb.append("k");
+                } else {
+                    sb.append(map.get(tab[0].trim()));
+                    sb.append(".");
+                    sb.append(map.get(tab[1].trim()));
+                    sb.append("k");
+                }
+                break;
+            case "orange":
+                sb.append(map.get(tab[0].trim()));
+                sb.append(map.get(tab[1].trim()));
+                sb.append("k");
+                break;
+            case "yellow":
+                sb.append(map.get(tab[0].trim()));
+                sb.append(map.get(tab[1].trim()));
+                sb.append("0k");
+                break;
+            case "green":
+                if (tab[1].equals("black")) {
+                    sb.append(map.get(tab[0].trim()));
+                    sb.append("M");
+                } else {
+                    sb.append(map.get(tab[0].trim()));
+                    sb.append(".");
+                    sb.append(map.get(tab[1].trim()));
+                    sb.append("M");
+                }
+                break;
+            case "blue":
+                sb.append(map.get(tab[0].trim()));
+                sb.append(map.get(tab[1].trim()));
+                sb.append("M");
+                break;
+            case "violet":
+                sb.append(map.get(tab[0].trim()));
+                sb.append(map.get(tab[1].trim()));
+                sb.append("0M");
+                break;
+        }
+
+        if (tab.length == 4) {
+            switch (tab[3].trim()) {
+                case "gold":
+                    sb.append(" ohms, 5%");
+                    break;
+                case "silver":
+                    sb.append(" ohms, 10%");
+                    break;
+            }
+        } else {
+            sb.append(" ohms, 20%");
+        }
+
+        return sb.toString();
+    }
 }
