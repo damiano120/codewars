@@ -25,15 +25,23 @@ movie(100, 10, 0.95) should return 24
 
 public class GoingToTheCinema {
     public static int movie(int card, int ticket, double perc) {
-        double sumA = 0, sumB = 0;
-        int counter = 0;
-        double ticB = ticket;
-        while (sumA < (sumB + card)) {
-            counter++;
-            sumA += ticket;
-            ticB = ticB * perc;
-            sumB += ticB;
+//        double sumA = 0, sumB = 0;
+//        int counter = 0;
+//        double ticB = ticket;
+//        while (sumA < (Math.ceil(sumB) + card)) {
+//            counter++;
+//            sumA += ticket;
+//            ticB = ticB * perc;
+//            sumB += ticB;
+//        }
+        int count = 0;
+        double totalB = card;
+
+        while (ticket * count <= Math.ceil(totalB)){
+            totalB += ticket * Math.pow(perc, ++count);
         }
-        return counter;
+
+        return count;
+
     }
 }

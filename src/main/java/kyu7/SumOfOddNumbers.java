@@ -15,14 +15,10 @@ rowSumOddNumbers(1); // 1
 rowSumOddNumbers(2); // 3 + 5 = 8
  */
 
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 public class SumOfOddNumbers {
     public static int rowSumOddNumbers(int n) {
 
+        return n*n*n;
     }
 }
