@@ -10,19 +10,39 @@ Examples
 
 public class ReverseWords {
     public static String reverseWords(final String original) {
-        String[] tab = original.split("[\\s]");
-        StringBuilder sb = new StringBuilder();
+//        String[] tab = original.split(" ");
+//        StringBuilder sb = new StringBuilder();
+//
+//        if (original.isEmpty()) {
+//            return "";
+//        }
+//
+//        if (original.matches(" ")){
+//            return original;
+//        }
+//
+//        for (String s : tab) {
+//            StringBuilder word = new StringBuilder();
+//            sb.append(word.append(s).reverse() + " ");
+//        }
+//        if (sb.length() > 1) {
+//            sb.deleteCharAt(sb.length() - 1);
+//        }
+//
+//        return sb.toString();
 
-        for (String s : tab) {
-            StringBuilder word = new StringBuilder();
-            sb.append(word.append(s).reverse() + " ");
-        }
-        if (sb.length() > 1) {
-            sb.deleteCharAt(sb.length() - 1);
-        }
-        System.out.println(original);
-        System.out.println(sb);
+        String[] array = original.split(" ");
 
-        return sb.toString();
+        if(array.length == 0)
+            return original;
+
+
+        int i = 0;
+        for(String string : array){
+            array[i] = new StringBuilder(string).reverse().toString();
+            i++;
+        }
+
+        return String.join(" ",array);
     }
 }
